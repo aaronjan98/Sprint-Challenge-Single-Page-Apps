@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import SearchForm from "./SearchForm";
 
 export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
@@ -17,11 +18,8 @@ export default function CharacterList() {
         console.log(response.data.results);
         const characters = response.data.results.filter(
           character =>
-            character.name
-              .toLowerCase()
-              .includes(query.toLowerCase())
+            character.name.toLowerCase().includes(query.toLowerCase())
         );
-        console.log("Rick & Morty characters", response);
         setData(characters);
       });
   }, [query]);
@@ -34,17 +32,17 @@ export default function CharacterList() {
     <section className="character-list">
 
       <form className="search">
-        <input
-          type="text"
-          onChange={handleInputChange}
-          value={query}
-          name="name"
-          tabIndex="0"
-          className="prompt search-name"
-          placeholder="search by name"
-          autoComplete="off"
-        />
-      </form>
+          <input
+            type="text"
+            onChange={handleInputChange}
+            value={query}
+            name="name"
+            tabIndex="0"
+            className="prompt search-name"
+            placeholder="search by name"
+            autoComplete="off"
+          />
+        </form>
 
       <h2>TODO: `array.map()` over your state here!</h2>
         {data.map(charInfo => {
