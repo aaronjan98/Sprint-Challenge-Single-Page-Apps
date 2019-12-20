@@ -20,7 +20,7 @@ export default function CharacterList() {
               .toLowerCase()
               .includes(query.toLowerCase())
         );
-         console.log("Rick & Morty characters", response);
+        console.log("Rick & Morty characters", response);
         setData(characters);
       });
   }, [query]);
