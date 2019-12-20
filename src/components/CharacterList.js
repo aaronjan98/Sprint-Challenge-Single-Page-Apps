@@ -31,7 +31,36 @@ export default function CharacterList() {
 
   return (
     <section className="character-list">
+
+      <form className="search">
+        <input
+          type="text"
+          onChange={handleInputChange}
+          value={query}
+          name="name"
+          tabIndex="0"
+          className="prompt search-name"
+          placeholder="search by name"
+          autoComplete="off"
+        />
+      </form>
+
       <h2>TODO: `array.map()` over your state here!</h2>
+        {data.map(charInfo => {
+          return (
+            <div
+              className="character-list "
+              key={charInfo.id}
+            >
+              <h2>
+                {charInfo.name}
+              </h2>
+              <h3 className="capital">
+                Created: {charInfo.created}
+              </h3>
+            </div>
+          );
+        })}
     </section>
   );
 }
