@@ -1,6 +1,36 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import SearchForm from "./SearchForm";
+import styled from "styled-components";
+
+const WrapperDiv = styled.div`
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin: 10px;
+  width: 400px;
+  background-color: rgb(0, 191, 255, 0.3);
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+
+`;
+
+const WrapperSec = styled.div`
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+`;
+
+const WrapperForm = styled.div`
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  margin: 10px;
+`;
+
 
 export default function CharacterList() {
   // TODO: Add useState to track data from useEffect
@@ -29,9 +59,8 @@ export default function CharacterList() {
   };
 
   return (
-    <section className="character-list">
-
-      <form className="search">
+    <>
+    <WrapperForm className="search">
           <input
             type="text"
             onChange={handleInputChange}
@@ -42,23 +71,28 @@ export default function CharacterList() {
             placeholder="search by name"
             autoComplete="off"
           />
-        </form>
+        </WrapperForm>
+    <WrapperSec className="character-list">
+
+      
 
         {data.map(charInfo => {
           return (
-            <div
+            <WrapperDiv
               className="character-list "
               key={charInfo.id}
             >
               <h2>
                 {charInfo.name}
               </h2>
-              <h3 className="capital">
+              <img src={charInfo.image}></img>
+              <p className="capital">
                 Created: {charInfo.created}
-              </h3>
-            </div>
+              </p>
+            </WrapperDiv>
           );
         })}
-    </section>
+    </WrapperSec>
+    </>
   );
 }
