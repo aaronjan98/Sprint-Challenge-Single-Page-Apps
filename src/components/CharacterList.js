@@ -44,7 +44,6 @@ export default function CharacterList() {
           />
         </form>
 
-      <h2>TODO: `array.map()` over your state here!</h2>
         {data.map(charInfo => {
           return (
             <div
