@@ -14,7 +14,8 @@ export default function CharacterList() {
         `https://rickandmortyapi.com/api/character/`,
       )
       .then(response => {
-        const characters = response.results.filter(
+        console.log(response.data.results);
+        const characters = response.data.results.filter(
           character =>
             character.name
               .toLowerCase()
